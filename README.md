@@ -5,7 +5,16 @@ application up and running.
 
 Things you may want to cover:
 
+## Setup
+
+```
+$ docker-compose build
+$ docker-compose run web rails db:create
+$ docker-compose up
+```
+
 * Ruby version
+- 2.7.1
 
 * System dependencies
 
