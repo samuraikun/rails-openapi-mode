@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
   web:
     tty: true
     stdin_open: true
@@ -11,8 +11,14 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
+      - bundle_path:/bundle
+    environment:
+      - BUNDLE_PATH=/bundle
     ports:
       - "8000:8000"
     depends_on:
       - db
 
+volumes:
+  bundle_path:
+  postgres-data:
